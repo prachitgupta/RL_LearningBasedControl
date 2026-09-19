@@ -12,8 +12,4 @@ Coursework for reinforcement learning and learning-based control.
 
 Author: Prachit Gupta (`prachit2`)
 
-AI assistance was used to turn the author's verified handwritten solutions and
-markdown notes into a typeset report, and to help phrase intuitive explanations.
-The mathematical work, source notes, code, figures, and final report are retained
-in the repository for transparency.
-
+chatgpt cli was used to genrate this report from my handwritten soilutions for Q1 and Q3 . THe entire repo containing the handwritten solutions and md files used for genrating reports for Q2 are available for review at [link](https://github.com/prachitgupta/RL_LearningBasedControl)

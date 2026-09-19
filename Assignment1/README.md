@@ -12,7 +12,4 @@ This directory contains the complete Homework 1 materials and submission.
 - `report_source/`: LaTeX source and figure assets for the final report.
 - `submission/`: final report PDF and code ZIP.
 
-AI assistance was used to typeset the report from the verified handwritten
-solutions and markdown files and to help write intuitive explanations. The
-underlying source materials are included here.
-
+chatgpt cli was used to genrate this report from my handwritten soilutions for Q1 and Q3 . THe entire repo containing the handwritten solutions and md files used for genrating reports for Q2 are available for review at [link](https://github.com/prachitgupta/RL_LearningBasedControl)

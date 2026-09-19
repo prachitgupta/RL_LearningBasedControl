@@ -1,0 +1,17 @@
+\begin{Verbatim}[fontsize=\small]
+Policy       Success Rate   Average Cost   Avg. Time to Goal
+------------------------------------------------------------
+MAP                 0.925         13.085              11.714
+QMDP                0.941         12.774              11.694
+\end{Verbatim}
+
+intuitive explanation
+
+QMDP accounts for uncertainty in the existing state rather than assuming the robot to be at the most likely state.
+
+The tradeoff is that you may miss out on those actions which are more advantageous at the most likely state but poor or incur a high penalty if the robot is actually in another state. The nature of the belief distribution also matters. If the second most likely state is not that much lower in probability than the most likely state, not accounting for the case when the robot is actually in that state can lead to failure runs.
+
+Intuitively, I feel that MAP should lead to faster goal reaching since it assumes the most likely state to be the only state for which it has to compute the minimum over all actions. However, as evident in the results, the more substantial treatment of state uncertainty in QMDP, at least for our example, does not appear to incur more time to reach the goal. This may not necessarily remain the case as the dimensions of the state and action spaces scale up, but that cannot be concluded from this experiment alone.
+
+
+Therefore, QMDP performs better in all three reported metrics for this experiment: higher success rate, lower average cost, and slightly lower average time-to-goal. However, the difference in average time-to-goal is very small, so it would be better not to make a strong deterministic conclusion that QMDP is inherently faster than MAP.

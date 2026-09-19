@@ -1,0 +1,145 @@
+\begingroup
+\setlength{\parskip}{3pt}
+\setlength{\abovedisplayskip}{7pt}
+\setlength{\belowdisplayskip}{7pt}
+\section{Question 3}
+\subsection*{(a)}
+\addcontentsline{toc}{subsection}{(a)}
+
+$\widehat S$ is finite subset of its 'convex' hull $S$
+\[
+\Rightarrow\text{ given }\sum_{i=1}^M\lambda_i s_i=x
+\quad\text{where }\sum\lambda_i=1
+\]
+\[
+\widetilde J_k(x)=\widetilde J_k\left(\sum_{i=1}^M\lambda_i s_i\right)
+\]
+
+using convexity (Jensen's inequality)
+\[
+\widehat J_k(x)=\widehat J_k\left(\sum_{i=1}^M\lambda_i s_i\right)
+\le\sum_{i=1}^M\lambda_i\widehat J_k(s_i)
+\]
+$\therefore$ this is true for every feasible $\lambda$
+that includes minimizing one
+\[
+\Rightarrow\widehat J_k(x)\le
+\min\left\{\sum_{i=1}^M\lambda_i\widehat J_k(s_i)
+\mid\lambda_i\in\text{feasible set}\right\}
+\]
+\[
+\Rightarrow\boxed{\widehat J_k(x)\le\widetilde J_k(x)}
+\]
+
+\subsection*{(b)}
+\addcontentsline{toc}{subsection}{(b)}
+using eq (2)
+\[
+J_{N-1}(x)=\E\left[g_{N-1}(x,u_{N-1}(x),w_{N-1})
++J_N\left(f_{N-1}(x,u_{N-1},w_{N-1})\right)\right]
+\]
+where $u_{N-1}(x)=\vec u$ is policy optimizer
+
+given
+\[
+J_N\left(f_{N-1}(\cdot)\right)=\widehat J_N(\cdot)=\widetilde J_N(\cdot)
+\]
+plugging this in
+\[
+J_{N-1}(x)=\E\left[g_{N-1}(x,u_{N-1}(x),w_{N-1})
++\widetilde J_N\left(f_{N-1}(x,u_{N-1},w_{N-1})\right)\right]
+\]
+$u_{N-1}=\vec u$ policy optimizing seq
+\[
+J_{N-1}(x)=\min_u\E\left[g_{N-1}(x,u,w_{N-1})
++\widetilde J_N\left(f_{N-1}(x,u,w_{N-1})\right)\right]
+\]
+this is how $\widehat J_k$ is defined
+\[
+\text{so }J_{N-1}(x)=\widehat J_{N-1}(x)
+\]
+using Convexity
+\[
+\widehat J_{N-1}(x)\le\widetilde J_{N-1}(x)\qquad\text{(proved in (a))}
+\]
+\[
+\text{so }\boxed{J_{N-1}(x)=\widehat J_{N-1}(x)\le\widetilde J_{N-1}(x)}
+\]
+
+\clearpage
+\subsection*{(c)}
+\addcontentsline{toc}{subsection}{(c)}
+\begin{align*}
+J_{N-2}(x)&=\E\left[g_{N-2}(x,\vec u_{N-2}(x),w_{N-2})
++J_{N-1}\left(f_{N-2}(x,\vec u_{N-2}(x),w_{N-2})\right)\right]\\
+&\le\E\left[g_{N-2}(x,\vec u_{N-2},w_{N-2})
++\widetilde J_{N-1}\left(f_{N-2}(x,\vec u_{N-2},w_{N-2})\right)\right]
+\end{align*}
+\hfill (from part b)
+
+$\because\ \vec u_{N-2}$ is optimizing seq.
+\begin{align*}
+&\le\E\left[g_{N-2}(\cdot)+\widetilde J_{N-1}(f_{N-2}(\cdot))\right]\\
+&=\min_u\E\left[g_{N-2}(x,u,w_{N-2})
++\widetilde J_{N-1}\left(f_{N-2}(x,u,w_{N-2})\right)\right]\\
+&=\widehat J_{N-2}(x)
+\end{align*}
+\hfill definition of $\widehat J_{N-2}$
+
+\& Convexity implies
+\[
+\widehat J_{N-2}(x)\le\widetilde J_{N-2}(x)
+\]
+\[
+\Rightarrow\boxed{J_{N-2}(x)\le\widehat J_{N-2}(x)\le\widetilde J_{N-2}(x)}
+\]
+
+\subsection*{(d)}
+\addcontentsline{toc}{subsection}{(d)}
+Proof by induction like we did in lecture 5
+
+Base case $k=N$ ($\because$ we go backwards)
+
+given
+\[
+J_N(x)=\widetilde J_N(x)=\widehat J_N(x)
+\]
+which is same as
+\[
+\Rightarrow J_N(x)\le\widetilde J_N(x)\le\widehat J_N(x)\quad\text{so true }\checkmark
+\]
+
+let's assume its true for $k+1$
+\[
+\Rightarrow J_{k+1}(x)\le\widehat J_{k+1}(x)\le\widetilde J_{k+1}(x)\tag{2}
+\]
+
+Using definition
+\begin{align*}
+J_k(x_k)&=\E\left[g_k(x_k,\vec u_k,w_k)
++J_{k+1}\left(f_k(x_k,\vec u_k,w_k)\right)\right]\\
+&\le\E\left[g_k(x_k,\vec u_k,w_k)
++\widetilde J_{k+1}\left(f_k(x_k,\vec u_k,w_k)\right)\right]
+\quad\text{(using (2))}\\
+&\le\min_{u_k\in U_k}\E\left[g_k(x_k,u_k,w_k)
++\widetilde J_{k+1}\left(f_k(x_k,u_k,w_k)\right)\right]\\
+&\le\widehat J_k(x_k)\qquad\text{(using definition of }\widehat J\text{)}
+\end{align*}
+
+also using Convexity
+\[
+\widehat J_k(x_k)\le\widetilde J_k(x_k)
+\]
+
+so by induction
+
+$\because$ Base case is trivially True
+
+\& $k$th case is true iff $k+1$th case is True
+
+We can say that
+\[
+\boxed{J_k(x)\le\widehat J_k(x)\le\widetilde J_k(x)}
+\quad\forall x\in S\ \&\ \forall k\in\{0,1,2,\ldots,N\}
+\]
+\endgroup
